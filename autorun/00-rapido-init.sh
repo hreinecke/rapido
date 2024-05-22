@@ -24,7 +24,7 @@ for i in $(cat /proc/cmdline); do
 	esac
 done
 [ -c "$_ctty" ] || _ctty=/dev/tty1
-setsid --ctty /bin/sh -i -l 0<>$_ctty 1<>$_ctty 2<>$_ctty
+setsid --ctty /bin/sh --rcfile /etc/autorun.env -i -l 0<>$_ctty 1<>$_ctty 2<>$_ctty
 
 # shut down when rapido autorun / shell exits...
 echo 1 > /proc/sys/kernel/sysrq && echo o > /proc/sysrq-trigger
